@@ -1,8 +1,8 @@
-# cdp-python-backend-template
+# fcp-mel-file-service
 
 This is work-in-progress. See [To Do List](./TODO.md)
 
-- [cdp-python-backend-template](#cdp-python-backend-template)
+- [fcp-mel-file-service](#fcp-mel-file-service)
   - [Requirements](#requirements)
     - [Python](#python)
     - [Linting and Formatting](#linting-and-formatting)
