@@ -20,6 +20,17 @@ This is work-in-progress. See [To Do List](./TODO.md)
   - [Licence](#licence)
     - [About the licence](#about-the-licence)
 
+
+## Service purpose
+
+This service will coordinate transfers from SharePoint through CDP
+Uploader into S3, tracking file metadata and transfer outcomes.
+
+File parsing and business validation belong to the separate
+fcp-mel-data-ingestion-service.
+
+Implementation is in progress.
+
 ## Requirements
 
 ### Python
@@ -234,3 +245,5 @@ information providers in the public sector to license the use and re-use of thei
 licence.
 
 It is designed to encourage use and re-use of information freely and flexibly, with only a few conditions.
+
+
