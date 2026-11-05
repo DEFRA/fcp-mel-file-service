@@ -39,7 +39,7 @@ services:
 
   ################################################################################
 
-  cdp-node-backend-template:
+  fcp-mel-file-service:
     build:
       context: .
       target: development
