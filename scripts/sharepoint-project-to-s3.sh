@@ -199,10 +199,12 @@ jq -s 'map({id, name, size})' "$TMP/csv-files.jsonl"
 
 echo "Excluded folders and non-CSV items:"
 jq -s '
-  map(select(
-    .folder != null or
-    (.file == null) or
-    (.name | test("\\.csv$"; "i") | not)
+  map(
+    select(
+      .folder != null or
+      (.file == null) or
+      (.name | test("\\.csv$"; "i") | not)
+    )
   ) | length
 ' "$TMP/children.jsonl"
 
