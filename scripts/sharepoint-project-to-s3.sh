@@ -42,13 +42,15 @@ BUCKET="dev-fcp-mel-ingestion-files-c63f2"
 DRIVE_ID="b!0cG1tOHq70uy_oXFfWez7KRKnrxp7fdJmWCuAsaQnRBi-7QMq6NARrae9qvy5e7D"
 ROOT_PATH="13.%20Data%20Management/Datastore/DDTS%20Ready%20Database%20data"
 
-MAX_FILES="${MAX_FILES:-1}"
+MAX_FILES="${MAX_FILES:-all}"
 MAX_BYTES=20971520
 POLL_SECONDS=5
 POLL_ATTEMPTS=120
 
-[[ "$MAX_FILES" =~ ^[1-9][0-9]*$ ]] ||
-  die "MAX_FILES must be a positive integer."
+if [[ "$MAX_FILES" != "all" ]]; then
+  [[ "$MAX_FILES" =~ ^[1-9][0-9]*$ ]] ||
+    die "MAX_FILES must be 'all' or a positive integer."
+fi
 
 TMP=$(mktemp -d)
 LOCK=""
@@ -235,7 +237,9 @@ LOCK="$STATE_DIR/.lock"
 COUNT=0
 
 while IFS= read -r ITEM; do
-  [[ "$COUNT" -lt "$MAX_FILES" ]] || break
+  if [[ "$MAX_FILES" != "all" && "$COUNT" -ge "$MAX_FILES" ]]; then
+    break
+  fi
 
   ID=$(jq -er '.id' <<< "$ITEM")
   TAG=$(jq -er '.eTag' <<< "$ITEM")
