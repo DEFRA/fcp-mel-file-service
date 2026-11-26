@@ -6,7 +6,7 @@ updates:
     directory: /
     open-pull-requests-limit: 10
 
-    # Group packages into shared PR
+    # Group related npm updates and bundle the remaining packages together
     groups:
       lint:
         patterns:
@@ -27,6 +27,10 @@ updates:
           - 'vitest'
           - 'nodemon'
           - 'npm-run-all'
+
+      other:
+        patterns:
+          - '*'
 
     ignore:
       - dependency-name: 'eslint-*'
